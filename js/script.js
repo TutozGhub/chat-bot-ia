@@ -40,7 +40,7 @@ MODELS.forEach((item, i) => {
     `
 });
 $cmbModelos.addEventListener('change', (e)=>{
-    location.href = `/?modelo=${e.target.value}`;
+    location.href = `?modelo=${e.target.value}`;
 })
 
 
@@ -69,7 +69,7 @@ messages.push({
 addMessage(msgText, 'bot');
 
 const engine = await CreateWebWorkerMLCEngine(
-    new Worker('/js/worker.js', {type: "module"}),
+    new Worker('js/worker.js', {type: "module"}),
     SELECTED_MODEL.id,
     {
         initProgressCallback: (info) =>{
