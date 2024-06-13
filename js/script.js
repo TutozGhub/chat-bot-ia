@@ -1,5 +1,6 @@
 import { CreateWebWorkerMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
 
+alert(".");
 const $ = (element)=> document.querySelector(element);
 
 const MODELS = [{
