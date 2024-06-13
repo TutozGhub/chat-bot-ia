@@ -74,7 +74,7 @@ ul{
     &.bot{
         align-self: flex-start;
         span{
-            background: url('/IMG/bot.png');
+            background: url('IMG/bot.png');
             background-size: cover;
             align-self: flex-start;
         }

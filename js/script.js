@@ -148,7 +148,7 @@ function addMessage(text, sender){
     $container.scrollTop = $container.scrollHeight;
 
     // LOG
-    console.log(messages);
+    // console.log(messages);
 
     return $div;
 }
