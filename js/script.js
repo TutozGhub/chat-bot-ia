@@ -1,6 +1,5 @@
-import { CreateWebWorkerMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
+import { CreateWebWorkerMLCEngine, CreateMLCEngine }  from "https://esm.run/@mlc-ai/web-llm";
 
-alert(".");
 const $ = (element)=> document.querySelector(element);
 
 const MODELS = [{
@@ -46,8 +45,7 @@ $cmbModelos.addEventListener('change', (e)=>{
 
 
 const msgText = 'Hola, mi nombre es Agustin ¿en que puedo ayudarte? ';
-let messages = [];
-messages.push({
+let messages = [{
     role: 'assistant',
     content: `
     ${msgText}
@@ -66,25 +64,28 @@ messages.push({
         **NO VOY A MENCIONAR QUE YA HABLÉ O MENCIONE PREVIAMENTE DE UN TEMA**
         **NO VOY A USAR LA EXPRESIÓN "Como ya mencioné", "Como te mencioné", "Como mencioné anteriormente" O CUALQUIER DIALOGO QUE EXPRESE QUE YA HE DICHO ALGO PREVIAMENTE**
     `
-})
+}];
 addMessage(msgText, 'bot');
 
-const engine = await CreateWebWorkerMLCEngine(
-    new Worker('js/worker.js', {type: "module"}),
+
+const $data = $('#model-data');
+$data.textContent = `${SELECTED_MODEL.nombre}`
+
+const engine = await CreateMLCEngine(
+    // new Worker('./js/worker.js', {type: "module"}),
     SELECTED_MODEL.id,
     {
-        initProgressCallback: (info) =>{
+        initProgressCallback: (info) => {
             $info.textContent = `${info.text}`;
-
-            const $data = $('#model-data');
-            $data.textContent = `${SELECTED_MODEL.nombre}`
-
-            if (info.progress === 1){
+            if (info.progress === 1) {
                 $button.removeAttribute('disabled');
             }
         }
     }
-)
+).catch(error => {
+    console.error('Error creating engine:', error);
+});
+console.log('Engine created:', engine);
 
 $form.addEventListener('submit', async (e)=>{
     e.preventDefault();

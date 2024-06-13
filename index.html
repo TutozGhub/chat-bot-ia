@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="laptop-code-solid.svg">
+    <link rel="shortcut icon" href="./laptop-code-solid.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script type="module" src="./js/script.js"></script>
 
     <title>ChatBot</title>
 </head>
 <body>
     <div class="modelo">
-        <label for="modelos">Seleccionar modelo</label>
+        <label for="cmb-modelos">Seleccionar modelo</label>
         <select id="cmb-modelos">
         </select>
     </div>
@@ -22,7 +24,7 @@
     </main>
     <form>
         <input name="message" type="text" placeholder="¿Que quieres saber?">
-        <button disabled><i class="fa-solid fa-paper-plane"></i></button>
+        <button><i class="fa-solid fa-paper-plane"></i></button>
     </form>
     <small id="model-data">&nbsp;</small>
     <small id="model-download">&nbsp;</small>
@@ -37,7 +39,5 @@
             </div>
         </li>
     </template>
-
-    <script type="module" src="./js/script.js"></script>
 </body>
 </html>
